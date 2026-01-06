@@ -1,0 +1,40 @@
+{
+    "name": "try-3mcp",
+    "version": "1.0.0",
+    "description": "MCP server for Redis, MongoDB, and MySQL",
+    "main": "build/index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build && tsc",
+        "preview": "vite preview",
+        "server": "node build/index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "mcp",
+        "redis",
+        "mongodb",
+        "mysql"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@modelcontextprotocol/sdk": "^0.6.0",
+        "dotenv": "^16.4.7",
+        "express": "^4.19.2",
+        "axios": "^1.7.9",
+        "ioredis": "^5.4.2",
+        "mongodb": "^6.12.0",
+        "mysql2": "^3.12.0",
+        "zod": "^3.24.1"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.21",
+        "@types/node": "^20.17.11",
+        "nodemon": "^3.1.9",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.7.2",
+        "vite": "^6.0.7"
+    }
+}

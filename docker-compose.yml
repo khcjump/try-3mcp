@@ -1,0 +1,57 @@
+services:
+  # The Multi-DB MCP Server
+  mcp-server:
+    build: .
+    container_name: mcp-server
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - MONGODB_URL=mongodb://mongodb:27017
+      - MONGODB_DB_NAME=mcp_test
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=rootpassword
+      - MYSQL_DATABASE=mcp_test
+      - PORT=3000
+    ports:
+      - "3000:3000"
+    depends_on:
+      - redis
+      - mongodb
+      - mysql
+    # Since this is a stdio-based server, it's usually run directly by the MCP host (like Claude Desktop).
+    # In a docker-compose context, it's often used for testing or when using SSE transport.
+    command: node build/index.js
+
+  # Redis
+  redis:
+    image: redis:alpine
+    container_name: mcp-redis
+    ports:
+      - "6379:6379"
+    restart: always
+
+  # MongoDB
+  mongodb:
+    image: mongo:latest
+    container_name: mcp-mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=mcp_test
+    restart: always
+
+  # MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: mcp-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=mcp_test
+    restart: always
+
+volumes:
+  mysql_data:
+  mongo_data:

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Multi-DB Dashboard</title>
+    <link rel="stylesheet" href="/src/frontend/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div id="app">
+        <header>
+            <div class="logo-container">
+                <div class="logo-icon">M</div>
+                <h1>MCP Multi-DB Server</h1>
+            </div>
+            <div class="status-badge" id="server-status">
+                <span class="status-dot"></span>
+                <span class="status-text">Connecting...</span>
+            </div>
+        </header>
+
+        <main>
+            <section class="grid-container">
+                <!-- Database Cards -->
+                <div class="db-card redis">
+                    <div class="db-icon">📊</div>
+                    <h3>Redis</h3>
+                    <p class="db-desc">Key-Value & Hash Storage</p>
+                    <div class="db-status online">Online</div>
+                </div>
+
+                <div class="db-card mongodb">
+                    <div class="db-icon">🍃</div>
+                    <h3>MongoDB</h3>
+                    <p class="db-desc">Document Database</p>
+                    <div class="db-status online">Online</div>
+                </div>
+
+                <div class="db-card mysql">
+                    <div class="db-icon">🐬</div>
+                    <h3>MySQL</h3>
+                    <p class="db-desc">Relational Database</p>
+                    <div class="db-status online">Online</div>
+                </div>
+
+                <div class="db-card bookstack">
+                    <div class="db-icon">📚</div>
+                    <h3>BookStack</h3>
+                    <p class="db-desc">Knowledge Base API</p>
+                    <div class="db-status online">Online</div>
+                </div>
+            </section>
+
+            <section class="tools-section glass-panel">
+                <h2>Available Tools</h2>
+                <div id="tools-list" class="tools-grid">
+                    <!-- Tools will be populated here -->
+                </div>
+            </section>
+
+            <section class="log-section glass-panel">
+                <h2>Activity Log</h2>
+                <div id="activity-log" class="log-container">
+                    <div class="log-entry system">Dashboard initialized and ready.</div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Powered by Model Context Protocol & Vite</p>
+        </footer>
+    </div>
+    <script type="module" src="/src/frontend/main.ts"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+node_modules
+build
+.env
+Dockerfile
+docker-compose.yml
+.git
+.idea
