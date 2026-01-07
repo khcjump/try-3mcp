@@ -2,7 +2,7 @@ services:
   # The Multi-DB MCP Server
   mcp-server:
     build: .
-    image: try-3mcp-mcp-server
+    image: khcjump/mcp-smily:local
     container_name: mcp-server
     environment:
       - REDIS_URL=redis://redis:6379

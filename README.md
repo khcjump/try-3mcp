@@ -107,13 +107,13 @@
         "-e", "MYSQL_USER=root",
         "-e", "MYSQL_PASSWORD=rootpassword",
         "-e", "MYSQL_DATABASE=mcp_test",
-        "try-3mcp-mcp-server"
+        "khcjump/mcp-smily:latest"
       ]
     }
   }
 }
 ```
-*注意：請確保 `try-3mcp-mcp-server` 是您的 Docker 鏡像名稱，且網路名稱 `try-3mcp_default` 與 docker-compose 建立的一致。*
+*注意：請確保 `khcjump/mcp-smily:latest` 是您的 Docker 鏡像名稱，且網路名稱 `try-3mcp_default` 與 docker-compose 建立的一致。*
 
 ### 4. 使用 npx 遠端執行 (Stdio)
 若您已將此專案發佈或想直接測試：
