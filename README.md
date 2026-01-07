@@ -88,7 +88,34 @@
 如果您的客戶端支援 **SSE** (例如使用 MCP Inspector 或其他 Web 型 Client)，請配置 URI 為：
 - **URL**: `http://localhost:3000/sse`
 
-### 3. 使用 npx 遠端執行 (Stdio)
+### 3. Claude Desktop (透過 Docker 執行)
+若您希望透過 Docker 容器來運行 Server (避免在宿主機安裝 Node 環境)，可以使用以下配置。這會讓 Claude 啟動一個臨時容器並透過 `stdio` 通訊：
+
+```json
+{
+  "mcpServers": {
+    "mcp-docker-server": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--network", "try-3mcp_default",
+        "-e", "REDIS_URL=redis://redis:6379",
+        "-e", "MONGODB_URL=mongodb://mongodb:27017",
+        "-e", "MYSQL_HOST=mysql",
+        "-e", "MYSQL_USER=root",
+        "-e", "MYSQL_PASSWORD=rootpassword",
+        "-e", "MYSQL_DATABASE=mcp_test",
+        "try-3mcp-mcp-server"
+      ]
+    }
+  }
+}
+```
+*注意：請確保 `try-3mcp-mcp-server` 是您的 Docker 鏡像名稱，且網路名稱 `try-3mcp_default` 與 docker-compose 建立的一致。*
+
+### 4. 使用 npx 遠端執行 (Stdio)
 若您已將此專案發佈或想直接測試：
 ```bash
 npx -y @modelcontextprotocol/inspector node build/index.js
